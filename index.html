@@ -1,7 +1,98 @@
 <!DOCTYPE html>
-<html>
-  <head><title>洗濯屋かんちゃん</title></head>
-  <body>
-    <h1>ようこそ！AIしみ診断テストページです</h1>
-  </body>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIしみ診断｜ファミリークリーニング</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f7faff;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0077c2;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    main {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    input[type="file"] {
+      margin-top: 1rem;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.2rem;
+      background-color: #0077c2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005e9a;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AIしみ診断</h1>
+    <p>ファミリークリーニング</p>
+  </header>
+
+  <main>
+    <h2>画像をアップして診断</h2>
+    <p>気になるシミの写真を選んでください。</p>
+
+    <input type="file" accept="image/*" id="imageInput" />
+    <button onclick="diagnose()">診断スタート</button>
+
+    <div id="result" style="margin-top:2rem;"></div>
+  </main>
+
+  <footer>
+    &copy; 2025 ファミリークリーニング. All rights reserved.
+  </footer>
+
+  <script>
+    function diagnose() {
+      const fileInput = document.getElementById("imageInput");
+      const resultDiv = document.getElementById("result");
+
+      if (!fileInput.files.length) {
+        resultDiv.innerHTML = "<p style='color:red;'>画像を選択してください。</p>";
+        return;
+      }
+
+      // 仮の診断結果
+      resultDiv.innerHTML = `
+        <h3>診断結果（例）</h3>
+        <p>このシミは「油性系（皮脂・ドレッシングなど）」の可能性があります。</p>
+        <p>クリーニングによる処理をおすすめします。</p>
+        <p style="margin-top:1rem;">
+          <a href="https://line.me/R/ti/p/@familycleaning" target="_blank" style="color:#0077c2; text-decoration:underline;">
+            LINEで診断結果を送る・相談する
+          </a>
+        </p>
+      `;
+    }
+  </script>
+</body>
 </html>
+
